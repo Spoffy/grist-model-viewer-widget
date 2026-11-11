@@ -1,3 +1,7 @@
 node_modules/
 dist/
+public/ktx2/
 demo/fixtures/**/*.glb
+demo/fixtures/**/*.ktx2
+demo/fixtures/**/manifest.json
+demo/fixtures/**/manifest-broken.json

@@ -6,14 +6,27 @@
     <title>3D Model</title>
     <style>
       body { margin: 0; }
-      model-viewer { position: fixed; inset: 0; width: 100%; height: 100%; }
+      #viewer { position: fixed; inset: 0; }
       #message { position: fixed; inset: 0; display: grid; place-items: center;
                  font: 14px sans-serif; }
       /* Without this the overlay would swallow the pointer events the camera controls need. */
       #message:empty { display: none; }
+      #show-label, #annotate-label { position: fixed; left: 8px; display: flex; gap: 4px;
+                                     align-items: center; padding: 3px 7px; border-radius: 3px;
+                                     background: rgba(255, 255, 255, 0.78); font: 12px sans-serif; }
+      #show-label { top: 8px; }
+      #annotate-label { top: 38px; }
+      #show-label[hidden], #annotate-label[hidden] { display: none; }
     </style>
   </head>
   <body>
+    <div id="viewer"></div>
+    <label id="show-label" hidden>
+      <input id="show" type="checkbox" checked /> Show annotations
+    </label>
+    <label id="annotate-label" hidden>
+      <input id="annotate" type="checkbox" /> Edit annotations
+    </label>
     <div id="message">Waiting for Grist</div>
     <!-- Served from this widget's own origin so it works against any Grist host, self-hosted
          included, and needs no third-party request at runtime. -->
